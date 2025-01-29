@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="button" onclick="signup()">Sign Up</button>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+
+        // axios.get("https://jsonplaceholder.typicode.com/posts?userId=2")
+        //     .then(data => console.log(data));
+
+        // axios.get("https://jsonplaceholder.typicode.com/posts", {
+        //     params: {
+        //         userId: 1
+        //     }
+        // })
+        //     .then(data => console.log(data));
+
+        function signup()
+        {
+            const userDetails = fetchDetails();
+
+            axios.post("http://testingapi.mindspace.fit/signup", userDetails)
+                .then(res => console.log(res))
+                .catch(err =>
+                {
+                    if (err.status == 409)
+                    {
+                        const p = document.createElement('p');
+                        p.innerText = "Email already exist";
+                        document.body.prepend(p);
+                    }
+                })
+
+        }
+
+        function login()
+        {
+            const userDetails = fetchDetails();
+
+            axios.post("http://localhost:3000/login", userDetails)
+                .then(res => alert('user loggedin successfully'))
+                .catch(err =>
+                {
+                    if (err.status == 401)
+                    {
+                        const p = document.createElement('p');
+                        p.innerText = "Invalid credentials";
+                        document.body.prepend(p);
+                        setTimeout(() =>
+                        {
+                            p.remove()
+                        }, 2000)
+                    }
+                })
+
+
+        }
+
+        function fetchDetails()
+        {
+            const name = document.querySelector('#name').value;
+            const pass = document.querySelector('#password').value;
+            const email = document.querySelector('#email').value;
+
+            return { name, pass, email };
+
+        }
+    </script>
+</body>
+
+</html>

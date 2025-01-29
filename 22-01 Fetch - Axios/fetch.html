@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="button" onclick="signup()">Sign Up</button>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function signup()
+        {
+            const userDetails = fetchDetails();
+            fetch("http://localhost:3000/signup", {
+                method: "post",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userDetails)
+            }).then(data => console.log(data));
+
+        }
+
+        function login()
+        {
+            const userDetails = fetchDetails();
+            fetch("http://localhost:3000/login", {
+                method: "post",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userDetails)
+            }).then(data =>
+            {
+                if (data.status == 200)
+                {
+                    alert("user have been successfully logged in")
+                }
+                if (data.status == 401)
+                {
+                    const p = document.createElement('p');
+                    p.innerText = "Invalid Credentials";
+                    document.body.prepend(p);
+                }
+            })
+        }
+
+        function fetchDetails()
+        {
+            const name = document.querySelector('#name').value;
+            const pass = document.querySelector('#password').value;
+            const email = document.querySelector('#email').value;
+
+            return { name, pass, email };
+
+        }
+
+
+    </script>
+</body>
+
+</html>
