@@ -31,20 +31,25 @@ export default class StateClass extends React.Component
         this.setState((prevState) => ({ laps: [...prevState.laps, prevState.counter] }))
     }
 
+    reset = () =>
+    {
+        this.setState({ counter: 0 })
+    }
+
     componentWillUnmount()
     {
         this.stopCounter();
     }
 
-    shouldComponentUpdate(prevProps, prevState)
-    {
-        if (prevState.counter % 2 == 0)
-        {
-            return false;
-        }
+    // shouldComponentUpdate(prevProps, prevState)
+    // {
+    //     if (prevState.counter % 2 == 0)
+    //     {
+    //         return false;
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     render()
     {
@@ -52,9 +57,16 @@ export default class StateClass extends React.Component
             <>
                 <h2>{this.state.counter}</h2>
                 {/* <button onClick={this.startCounter}>Start</button> */}
-                <Button name={this.state.counter} eventHandler={this.startCounter} />
-                <button onClick={this.stopCounter}>Stop</button>
+                <Button name="Start" eventHandler={this.startCounter} />
+                {/* {(this.state.startFlag) && <button onClick={this.stopCounter}>Stop</button>}
+                {!this.state.startFlag && <button onClick={this.reset}>Reset</button>} */}
+
+                {this.state.startFlag ?
+                    <button onClick={this.stopCounter}>Stop</button> :
+                    <button onClick={this.reset}>Reset</button>
+                }
                 <button onClick={this.addLaps}>Laps</button>
+
                 <ul>
                     {
                         this.state.laps.map(lap =>
