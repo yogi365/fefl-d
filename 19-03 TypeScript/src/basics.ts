@@ -194,34 +194,40 @@
 
 //enum
 
-enum Role {
-    Admin = 2,
-    Student = 101,
-    Teacher,
-    Guest
-}
+// enum Role {
+//     Admin = 2,
+//     Student = 101,
+//     Teacher,
+//     Guest
+// }
 
-function PerformAuthentication(role: Role) {
-    switch (role) {
-        case Role.Admin:
-            console.log("Admin process initiated");
-            break;
-        case Role.Student:
-            console.log("Student process initiated");
-            break;
-        case Role.Teacher:
-            console.log("Teacher process initiated");
-            break;
-        case Role.Guest:
-            console.log("Guest process initiated");
-            break;
-        default:
-            console.log("Invalid Role");
+// function PerformAuthentication(role: Role) {
+//     switch (role) {
+//         case Role.Admin:
+//             console.log("Admin process initiated");
+//             break;
+//         case Role.Student:
+//             console.log("Student process initiated");
+//             break;
+//         case Role.Teacher:
+//             console.log("Teacher process initiated");
+//             break;
+//         case Role.Guest:
+//             console.log("Guest process initiated");
+//             break;
+//         default:
+//             console.log("Invalid Role");
 
-    }
-}
+//     }
+// }
 
-PerformAuthentication(Role.Student)
+// PerformAuthentication(Role.Student)
 
 
 //generics
+
+function getFirstElementOfArray<T>(arr: T[]): T {
+    return arr[0];
+}
+
+console.log(getFirstElementOfArray([1, 2, 3, 4, 5]));
