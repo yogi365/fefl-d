@@ -1,0 +1,54 @@
+*************************** Task 1 ***************************
+Create a TypeScript program that demonstrates the use of function overloading by defining an add function with two overloads:
+
+One overload handles the addition of two numbers.
+The other handles the concatenation of two strings.
+Requirements
+Input Fields:
+
+Create two HTML input fields to accept user input.
+Add a button labeled ""Add"" to trigger the operation.
+Functionality:
+
+When the ""Add"" button is clicked:
+Retrieve the values entered in the input fields.
+Check whether both values are numbers or strings:
+If both inputs can be converted to valid numbers, call the add function that adds two numbers.
+If either input cannot be converted to a valid number, treat the inputs as strings and call the add function that concatenates two strings.
+Display the result in a designated area below the input fields.
+Implementation:
+
+Use function overloading to define two versions of the add function:
+add(a: number, b: number): number - Adds two numbers and returns their sum.
+add(a: string, b: string): string - Concatenates two strings and returns the combined result.
+Output:
+
+Display the result of the operation (either the sum of numbers or the concatenated string) on the web page.
+Example Input and Output
+Case 1 (Numerical Addition):
+
+Input 1: 10, Input 2: 20
+Result: 30
+Case 2 (String Concatenation):
+
+Input 1: ""Hello"", Input 2: ""World""
+Result: ""HelloWorld"""
+
+
+
+
+*************************** Task 2 ***************************
+create basic generic based  array and function
+
+*************************** Task 3 ***************************
+Manage Employee Records with Advanced Tuple Types
+1. Create a tuple type to store employee details:
+    - Name (string)
+    - Department (use an Enum for departments: HR, Tech, Management)
+    - Employment Status (a bits variable that accepts only 0 or 1 to indicate full-time status)
+2. Store multiple employee records in an array of this tuple type.
+
+*************************** Task 4 ***************************
+- Create a TypeScript program that counts the number of times a button is clicked.
+- Create a live search filter for a list of items.
+- Track and display key presses in real-time.
